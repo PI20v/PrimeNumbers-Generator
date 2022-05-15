@@ -1,0 +1,16 @@
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\bin\Debug\netcoreapp3.1\PrimeNumbers-Generator.exe
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\bin\Debug\netcoreapp3.1\PrimeNumbers-Generator.deps.json
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\bin\Debug\netcoreapp3.1\PrimeNumbers-Generator.runtimeconfig.json
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\bin\Debug\netcoreapp3.1\PrimeNumbers-Generator.runtimeconfig.dev.json
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\bin\Debug\netcoreapp3.1\PrimeNumbers-Generator.dll
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\bin\Debug\netcoreapp3.1\PrimeNumbers-Generator.pdb
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.csproj.AssemblyReference.cache
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers_Generator.Form1.resources
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.csproj.GenerateResource.cache
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.AssemblyInfoInputs.cache
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.AssemblyInfo.cs
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.csproj.CoreCompileInputs.cache
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.dll
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.pdb
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.genruntimeconfig.cache

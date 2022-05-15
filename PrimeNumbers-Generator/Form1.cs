@@ -12,10 +12,20 @@ namespace PrimeNumbers_Generator
 {
     public partial class Form1 : Form
     {
+        Algorithm alg = new Algorithm();
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
+            List<int> list = new List<int>(alg.GetPrimeNumbers(Int32.Parse(textBox1.Text)));
+            for(int i=0; i<list.Count; i++)
+            {
+                richTextBox1.Text += list[i] + " ";
+            }
+        }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Университет\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\PrimeNumbers-Generator.csproj": {}
+    "C:\\Unic\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\PrimeNumbers-Generator.csproj": {}
   },
   "projects": {
-    "C:\\Университет\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\PrimeNumbers-Generator.csproj": {
+    "C:\\Unic\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\PrimeNumbers-Generator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Университет\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\PrimeNumbers-Generator.csproj",
+        "projectUniqueName": "C:\\Unic\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\PrimeNumbers-Generator.csproj",
         "projectName": "PrimeNumbers-Generator",
-        "projectPath": "C:\\Университет\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\PrimeNumbers-Generator.csproj",
+        "projectPath": "C:\\Unic\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\PrimeNumbers-Generator.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Университет\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\obj\\",
+        "outputPath": "C:\\Unic\\Групповая динамика\\PrimeNumbers-Generator\\PrimeNumbers-Generator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
