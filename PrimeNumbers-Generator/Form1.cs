@@ -13,6 +13,7 @@ namespace PrimeNumbers_Generator
     public partial class Form1 : Form
     {
         Algorithm alg = new Algorithm();
+        SaveNumbers sn = new SaveNumbers();
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +26,19 @@ namespace PrimeNumbers_Generator
             for(int i=0; i<list.Count; i++)
             {
                 richTextBox1.Text += list[i] + " ";
+            }
+
+            if (checkBox1.Checked)
+            {
+                int is_problem = sn.saveNumbers(textBox2.Text, richTextBox1);
+                if(is_problem == 0)
+                {
+                    MessageBox.Show("Числа успешно сохранены в файл по пути " + textBox2.Text + "!");
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка!!! Числа не удалось сохранить в файл по пути " + textBox2.Text + "!");
+                }
             }
         }
     }
