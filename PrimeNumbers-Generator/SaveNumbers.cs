@@ -8,11 +8,18 @@ namespace PrimeNumbers_Generator
 {
     class SaveNumbers
     {
-        public int saveNumbers(String path, RichTextBox rtb)
+        public int saveNumbers(String path, List<int> list)
         {
+
             try
             {
-                File.WriteAllText(path, rtb.Text);
+                File.WriteAllText(path, "");
+                for (int i = 0; i < list.Count; i++)
+                {
+                    
+                    File.AppendAllText(path, list[i].ToString() + " ");
+                }
+                
                 return 0;
             }
             catch (Exception exc)
