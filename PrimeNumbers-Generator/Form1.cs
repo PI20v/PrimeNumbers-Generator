@@ -14,11 +14,10 @@ namespace PrimeNumbers_Generator
     public partial class Form1 : Form
     {
         Algorithm alg = new Algorithm();
-        SaveNumbers sn = new SaveNumbers();
-        bool is_need_numbers = false;
-        
+        List<int> list = new List<int>();
+
         string message = "";
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -28,21 +27,17 @@ namespace PrimeNumbers_Generator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //ref int xRef = ref x; нужно передавать по ссылке
-
 
             if (backgroundWorker1.IsBusy != true)
             {
-                is_need_numbers = true;
-                // Start the asynchronous operation.
+
                 backgroundWorker1.RunWorkerAsync();
                 button1.Text = "Остановить";
             }
             else
             {
-                is_need_numbers = false;
+
                 backgroundWorker1.CancelAsync();
-                //button1.Text = "Сгенерировать";
             }
         }
 
@@ -89,14 +84,18 @@ namespace PrimeNumbers_Generator
 
             if (!checkBox3.Checked && !checkBox1.Checked && !checkBox2.Checked)
             {
+                button1.Text = "Сгенерировать";
                 MessageBox.Show("Пожалуйста, поставьте галочку хоть где-то!");
                 return;
             }
 
             message = "";
-            richTextBox1.Text = "";
-            List<int> list = new List<int>();
-
+            if (!checkBox4.Checked)
+            {
+                richTextBox1.Text = "";
+                list.Clear();
+            }
+                
             int num_prime_numbers = 0;
             try
             {
@@ -104,69 +103,43 @@ namespace PrimeNumbers_Generator
             }
             catch (Exception exc)
             {
+                button1.Text = "Сгенерировать";
                 MessageBox.Show("Введите корректное значения для количества простых чисел!");
                 return;
             }
 
+            string path_log = null;
+            string path_num = null;
+            int difficult = 0;
+            RichTextBox rtb = null;
+            if (checkBox1.Checked)
+            {
+                path_num = textBox2.Text;
+            }
             if (checkBox2.Checked)
             {
-                list = new List<int>(alg.GetPrimeNumbersAndLog(num_prime_numbers, hScrollBar1.Value, textBox3.Text));
-                if (list.Count != 0)
-                {
-                    message += "Лог успешно сохранен по адресу " + textBox3.Text + "!\n";
-                }
-                else
-                {
-                    message += "Лог не удалось сохранить по адресу " + textBox3.Text + "!\n";
-                }
+                path_log = textBox3.Text;
+                difficult = hScrollBar1.Value;
             }
             if (checkBox3.Checked)
             {
-                if (list.Count == 0)
-                    list = new List<int>(alg.GetPrimeNumbers(Int32.Parse(textBox1.Text)));
-                for (int i = 0; i < list.Count; i++)
-                {
-                    richTextBox1.Text += list[i] + " ";
-                }
+                rtb = richTextBox1;
             }
+            message = alg.NeedPrimeNumbers(num_prime_numbers, backgroundWorker1, list, rtb, path_num, path_log, difficult);
+            
+            button1.Text = "Сгенерировать";
 
-            if (checkBox1.Checked)
+            if(message == "")
             {
-                if (list.Count == 0)
-                    list = new List<int>(alg.GetPrimeNumbers(Int32.Parse(textBox1.Text)));
-                int is_problem = sn.saveNumbers(textBox2.Text, list);
-                if (is_problem == 0)
-                {
-                    message += "Числа успешно сохранены в файл по пути " + textBox2.Text + "!";
-                }
-                else
-                {
-                    message += "Ошибка!!! Числа не удалось сохранить в файл по пути " + textBox2.Text + "!";
-                }
-            }
-
-            if (checkBox1.Checked || checkBox2.Checked)
-                MessageBox.Show(message);
-            worker.ReportProgress(100);
-        }
-
-
-        // This event handler deals with the results of the background operation.
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Cancelled == true)
-            {
-                
-            }
-            else if (e.Error != null)
-            {
-                MessageBox.Show("Error: " + e.Error.Message);
+                MessageBox.Show("Операция успешно завершена!");
             }
             else
             {
-                //resultLabel.Text = "Done!";
+                MessageBox.Show(message);
             }
-            button1.Text = "Сгенерировать";
         }
+
+
+
     }
 }

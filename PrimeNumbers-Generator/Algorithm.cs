@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace PrimeNumbers_Generator
 {
@@ -10,75 +12,96 @@ namespace PrimeNumbers_Generator
     class Algorithm
     {
         List<int> primeNumbers = new List<int>();
-        public List<int> GetPrimeNumbers(int num)
+
+        public string NeedPrimeNumbers(int num, BackgroundWorker bw, List<int> previous, RichTextBox rtb, string path_num, string path_log, int difficult)
         {
-            primeNumbers.Clear();
+            string message = "";
+            if (path_num != null && !File.Exists(path_num))
+            {
+                message += "Ошибка! Файла для записи чисел не найдено!";
+                return message;
+            }
+            if (path_log != null && !File.Exists(path_log))
+            {
+                message += "Ошибка! Файла для записи лога не найдено!";
+                return message;
+            }
+
+            if(path_num != null && previous.Count == 0)
+            {
+                File.WriteAllText(path_num, "");
+            }
+            if(path_log != null && previous.Count == 0)
+            {
+                File.WriteAllText(path_log, "");
+            }
 
             bool is_prime;
+            int i = 2;
             int cur_num = 0;
-            for(int i=2; cur_num < num; i++)
+            if(previous.Count != 0)
             {
-                is_prime = true;
-                for(int j = 0; j < primeNumbers.Count; j++)
+                cur_num = previous.Count;
+                i = previous[previous.Count - 1] + 1;
+            }
+            
+            for (; cur_num < num; i++)
+            {
+                
+                if (bw.CancellationPending == true)
                 {
-                    if(i % primeNumbers[j] == 0)
+                    is_prime = false;
+                    break;
+                }
+
+                is_prime = true;
+                if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Testing number " + i.ToString() + "...\n");
+                for (int j = 0; j < previous.Count; j++)
+                {
+                    if (bw.CancellationPending == true)
                     {
+                        break;
+                    }
+
+                    if (i % previous[j] == 0)
+                    {
+                            
+                        if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Number " + i.ToString() + " is divided by " + previous[j].ToString() + "...\n");
+                        if(path_log != null) File.AppendAllText(path_log, "Number " + i.ToString() + " is not prime number.\n");
                         is_prime = false;
                         break;
                     }
+                    if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Number " + i.ToString() + " is not divided by " + previous[j].ToString() + "...\n");
                 }
 
-                if(is_prime)
+                if (bw.CancellationPending == true)
                 {
-                    primeNumbers.Add(i);
+                    break;
+                }
+
+                if (is_prime)
+                {
+                    if(path_log != null) File.AppendAllText(path_log, "Number " + i.ToString() + " is prime number.\n");
+                    previous.Add(i);
+                    if(rtb != null)
+                    {
+                        rtb.Text += i.ToString() + " ";
+                    }
+                    if(path_num != null)
+                    {
+                        File.AppendAllText(path_num, i.ToString() + " ");
+                    }
                     cur_num++;
                 }
             }
 
-            return primeNumbers;
-        }
-
-        public List<int> GetPrimeNumbersAndLog(int num, int difficult, string path)
-        {
-            // difficult: [1;2]
-            File.WriteAllText(path, "");
-
-            primeNumbers.Clear();
-            try
+            if(bw.CancellationPending == true)
             {
-                bool is_prime;
-                int cur_num = 0;
-                for (int i = 2; cur_num < num; i++)
-                {
-                    is_prime = true;
-                    for (int j = 0; j < primeNumbers.Count; j++)
-                    {
-                        if (difficult > 1) File.AppendAllText(path, "Testing number " + i.ToString() + "...\n");
-                        if (i % primeNumbers[j] == 0)
-                        {
-                            if (difficult > 1) File.AppendAllText(path, "Number " + i.ToString() + " is divided by " + primeNumbers[j].ToString() + "...\n");
-                            File.AppendAllText(path, "Number " + i.ToString() + " is not prime number.\n");
-                            is_prime = false;
-                            break;
-                        }
-                        if (difficult > 1) File.AppendAllText(path, "Number " + i.ToString() + " is not divided by " + primeNumbers[j].ToString() + "...\n");
-                    }
-
-                    if (is_prime)
-                    {
-                        File.AppendAllText(path, "Number " + i.ToString() + " is prime number.\n");
-                        primeNumbers.Add(i);
-                        cur_num++;
-                    }
-                    if (difficult > 1) File.AppendAllText(path, "Testing number " + i.ToString() + " completed.\n");
-                }
-            }
-            catch (Exception ecx)
-            {
-
+                message += "Операция прервана!";
             }
 
-            return primeNumbers;
+            return message;
         }
+        
     }
 }
