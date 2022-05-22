@@ -69,7 +69,7 @@ namespace PrimeNumbers_Generator
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(56, 33);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(370, 71);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(370, 98);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // Form2

@@ -112,8 +112,8 @@ namespace PrimeNumbers_Generator
                 
                 is_continue = 3;
                 Form2 new_form = new Form2("Вы уверены, что хотите начать генерацию заново? У вас сгенерировано " + list.Count + " чисел.");
-                //new_form.StartPosition = Form1.CenterToScreen();
-                
+                new_form.StartPosition = FormStartPosition.CenterScreen;
+
                 new_form.ShowDialog();
                 if (is_continue == 3 || is_continue == 0)
                 {
@@ -122,6 +122,21 @@ namespace PrimeNumbers_Generator
                     return;
                 }
                     
+            }
+            
+            if(checkBox2.Checked && num_prime_numbers > 750)
+            {
+                is_continue = 3;
+                Form2 new_form = new Form2("Вы уверены, что хотите сгенерировать сложный лог? Для генерации 750 чисел потребуется 10 мегабайт .txt файла и эта величина будет расти с большой прогрессией.");
+                new_form.StartPosition = FormStartPosition.CenterScreen;
+
+                new_form.ShowDialog();
+                if (is_continue == 3 || is_continue == 0)
+                {
+
+                    button1.Text = "Сгенерировать";
+                    return;
+                }
             }
 
             message = "";
