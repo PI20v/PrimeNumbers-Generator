@@ -14,3 +14,4 @@ C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-
 C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.dll
 C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.pdb
 C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers-Generator.genruntimeconfig.cache
+C:\Unic\Групповая динамика\PrimeNumbers-Generator\PrimeNumbers-Generator\obj\Debug\netcoreapp3.1\PrimeNumbers_Generator.Form2.resources

@@ -18,6 +18,8 @@ namespace PrimeNumbers_Generator
 
         string message = "";
 
+        static public int is_continue;
+
         public Form1()
         {
             InitializeComponent();
@@ -82,6 +84,7 @@ namespace PrimeNumbers_Generator
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
+
             if (!checkBox3.Checked && !checkBox1.Checked && !checkBox2.Checked)
             {
                 button1.Text = "Сгенерировать";
@@ -89,12 +92,7 @@ namespace PrimeNumbers_Generator
                 return;
             }
 
-            message = "";
-            if (!checkBox4.Checked)
-            {
-                richTextBox1.Text = "";
-                list.Clear();
-            }
+            
                 
             int num_prime_numbers = 0;
             try
@@ -106,6 +104,31 @@ namespace PrimeNumbers_Generator
                 button1.Text = "Сгенерировать";
                 MessageBox.Show("Введите корректное значения для количества простых чисел!");
                 return;
+            }
+
+            
+            if (!checkBox4.Checked && list.Count >= 4000)
+            {
+                
+                is_continue = 3;
+                Form2 new_form = new Form2("Вы уверены, что хотите начать генерацию заново? У вас сгенерировано " + list.Count + " чисел.");
+                //new_form.StartPosition = Form1.CenterToScreen();
+                
+                new_form.ShowDialog();
+                if (is_continue == 3 || is_continue == 0)
+                {
+                    
+                    button1.Text = "Сгенерировать";
+                    return;
+                }
+                    
+            }
+
+            message = "";
+            if (!checkBox4.Checked)
+            {
+                richTextBox1.Text = "";
+                list.Clear();
             }
 
             string path_log = null;
@@ -137,6 +160,8 @@ namespace PrimeNumbers_Generator
             {
                 MessageBox.Show(message);
             }
+
+            label5.Text = "Чисел: " + list.Count.ToString();
         }
 
 
