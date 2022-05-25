@@ -13,7 +13,7 @@ namespace PrimeNumbers_Generator
     {
         List<int> primeNumbers = new List<int>();
 
-        public string NeedPrimeNumbers(int num, BackgroundWorker bw, List<int> previous, RichTextBox rtb, string path_num, string path_log, int difficult)
+        public string NeedPrimeNumbers(int num, BackgroundWorker bw, List<int> previous, RichTextBox rtb, string path_num, string path_log, int difficult, int begin_with)
         {
             string message = "";
             if (path_num != null && !File.Exists(path_num))
@@ -55,7 +55,8 @@ namespace PrimeNumbers_Generator
                 }
 
                 is_prime = true;
-                if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Testing number " + i.ToString() + "...\n");
+                if(i >= begin_with)
+                    if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Testing number " + i.ToString() + "...\n");
                 for (int j = 0; j < previous.Count; j++)
                 {
                     if (bw.CancellationPending == true)
@@ -65,13 +66,15 @@ namespace PrimeNumbers_Generator
 
                     if (i % previous[j] == 0)
                     {
-                            
-                        if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Number " + i.ToString() + " is divided by " + previous[j].ToString() + "...\n");
-                        if(path_log != null) File.AppendAllText(path_log, "Number " + i.ToString() + " is not prime number.\n");
+                        if (i >= begin_with)
+                            if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Number " + i.ToString() + " is divided by " + previous[j].ToString() + "...\n");
+                        if (i >= begin_with)
+                            if (path_log != null) File.AppendAllText(path_log, "Number " + i.ToString() + " is not prime number.\n");
                         is_prime = false;
                         break;
                     }
-                    if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Number " + i.ToString() + " is not divided by " + previous[j].ToString() + "...\n");
+                    if (i >= begin_with)
+                        if (path_log != null && difficult > 1) File.AppendAllText(path_log, "Number " + i.ToString() + " is not divided by " + previous[j].ToString() + "...\n");
                 }
 
                 if (bw.CancellationPending == true)
@@ -81,13 +84,14 @@ namespace PrimeNumbers_Generator
 
                 if (is_prime)
                 {
-                    if(path_log != null) File.AppendAllText(path_log, "Number " + i.ToString() + " is prime number.\n");
+                    if (i >= begin_with)
+                        if (path_log != null) File.AppendAllText(path_log, "Number " + i.ToString() + " is prime number.\n");
                     previous.Add(i);
-                    if(rtb != null)
+                    if(rtb != null && i >= begin_with)
                     {
                         rtb.Text += i.ToString() + " ";
                     }
-                    if(path_num != null)
+                    if(path_num != null && i >= begin_with)
                     {
                         File.AppendAllText(path_num, i.ToString() + " ");
                     }

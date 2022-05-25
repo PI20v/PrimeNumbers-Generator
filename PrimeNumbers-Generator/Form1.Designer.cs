@@ -47,6 +47,8 @@ namespace PrimeNumbers_Generator
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -213,11 +215,30 @@ namespace PrimeNumbers_Generator
             this.label5.TabIndex = 16;
             this.label5.Text = "Чисел: ";
             // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(53, 98);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(204, 24);
+            this.checkBox5.TabIndex = 17;
+            this.checkBox5.Text = "Начинать вывод с числа:";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(258, 98);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(125, 27);
+            this.textBox4.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 612);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.button3);
@@ -262,6 +283,8 @@ namespace PrimeNumbers_Generator
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 

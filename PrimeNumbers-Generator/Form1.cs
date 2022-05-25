@@ -92,6 +92,20 @@ namespace PrimeNumbers_Generator
                 return;
             }
 
+            int begin_with = 0;
+            if (checkBox5.Checked)
+            {
+                try
+                {
+                    begin_with = Int32.Parse(textBox4.Text);
+                }
+                catch (Exception exc)
+                {
+                    button1.Text = "Сгенерировать";
+                    MessageBox.Show("Введите корректное значения для числа, с которого нужно начинать!");
+                    return;
+                }
+            }
             
                 
             int num_prime_numbers = 0;
@@ -124,7 +138,7 @@ namespace PrimeNumbers_Generator
                     
             }
             
-            if(checkBox2.Checked && num_prime_numbers > 750)
+            if(checkBox2.Checked && num_prime_numbers > 750 && hScrollBar1.Value == 2)
             {
                 is_continue = 3;
                 Form2 new_form = new Form2("Вы уверены, что хотите сгенерировать сложный лог? Для генерации 750 чисел потребуется 10 мегабайт .txt файла и эта величина будет расти с большой прогрессией.");
@@ -163,7 +177,7 @@ namespace PrimeNumbers_Generator
             {
                 rtb = richTextBox1;
             }
-            message = alg.NeedPrimeNumbers(num_prime_numbers, backgroundWorker1, list, rtb, path_num, path_log, difficult);
+            message = alg.NeedPrimeNumbers(num_prime_numbers, backgroundWorker1, list, rtb, path_num, path_log, difficult, begin_with);
             
             button1.Text = "Сгенерировать";
 
